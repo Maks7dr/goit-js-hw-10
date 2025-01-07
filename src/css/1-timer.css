@@ -16,16 +16,27 @@ input:hover {
 input:active {
   border: 1px solid #4e75ff;
 }
+input:disabled {
+  border: 1px solid #808080;
+}
 button {
   border-radius: 8px;
   padding: 8px 16px;
-  background-color: #cfcfcf;
+  background-color: #4e75ff;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: #989898;
+  color: #fff;
   border: none;
   cursor: pointer;
+}
+button:hover {
+  background-color: #6c8cff;
+  color: #fff;
+}
+button:disabled {
+  background-color: #cfcfcf;
+  color: #989898;
 }
 .timer {
   display: flex;
