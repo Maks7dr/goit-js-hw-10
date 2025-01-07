@@ -9,9 +9,30 @@
     />
     <title>Page 2</title>
     <script type="module" crossorigin src="/vanilla-app-template/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-giOSDxUi.css">
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-CERA8r_M.css">
   </head>
   <body>
-    <main></main>
+    <main>
+      <form class="form">
+        <label>
+          Delay (ms)
+          <input type="number" name="delay" required />
+        </label>
+
+        <fieldset>
+          <legend>State</legend>
+          <label>
+            <input type="radio" name="state" value="fulfilled" required />
+            Fulfilled
+          </label>
+          <label>
+            <input type="radio" name="state" value="rejected" required />
+            Rejected
+          </label>
+        </fieldset>
+
+        <button type="submit">Create notification</button>
+      </form>
+    </main>
   </body>
 </html>
