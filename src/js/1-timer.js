@@ -2,15 +2,18 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-const starsImput = document.querySelector('#datetime-picker');
+
+const startImput = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
+let userSelectedDate = null;
+let timerId = null;
+
 const options = {
-  dateFormat: 'Y-m-d H:i',
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
@@ -19,6 +22,7 @@ const options = {
     console.log(selectedDates[0]);
     const currentDate = new Date();
     userSelectedDate = selectedDates[0];
+
     if (userSelectedDate < currentDate) {
       iziToast.error({
         title: 'Error',
@@ -26,7 +30,7 @@ const options = {
         position: 'topRight',
       });
 
-      userSelectedDate = null;
+      // userSelectedDate = null;
       startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
@@ -34,14 +38,13 @@ const options = {
   },
 };
 
-flatpickr('#datetime-picker', options);
-let userSelectedDate = null;
-let timerId = null;
+flatpickr(startImput, options);
+
 startBtn.addEventListener('click', startCountdown);
 
 function startCountdown() {
   startBtn.disabled = true;
-  starsImput.disabled = true;
+  startImput.disabled = true;
   timerId = setInterval(() => {
     const currentDate = new Date();
     const timeDifference = userSelectedDate - currentDate;
@@ -49,9 +52,14 @@ function startCountdown() {
     if (timeDifference <= 0) {
       clearInterval(timerId);
       updateTimerDisplay(0);
-      window.alert('Countdown completed!');
-      startBtn.disabled = false;
-      starsImput.disabled = false;
+      iziToast.success({
+        title: 'Finished',
+        message: 'Countdown completed!',
+        position: 'topRight',
+      });
+
+      // startBtn.disabled = false;
+      startImput.disabled = false;
       return;
     }
 
