@@ -30,7 +30,6 @@ const options = {
         position: 'topRight',
       });
 
-      // userSelectedDate = null;
       startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
@@ -40,6 +39,7 @@ const options = {
 
 flatpickr(startImput, options);
 
+startBtn.disabled = true;
 startBtn.addEventListener('click', startCountdown);
 
 function startCountdown() {
@@ -58,7 +58,6 @@ function startCountdown() {
         position: 'topRight',
       });
 
-      // startBtn.disabled = false;
       startImput.disabled = false;
       return;
     }
