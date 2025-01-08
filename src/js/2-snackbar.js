@@ -35,4 +35,5 @@ function onFormSubmit(event) {
         })
       );
   }, delay);
+  registerForm.reset();
 }
